@@ -1,6 +1,6 @@
 # 记忆系统架构文档
 
-**版本：** youyou-v2.1 (融合 memU + 树状生长)  
+**版本：** youyou-v3.0 (融合 Agent Loop)  
 **更新日期：** 2026-03-01
 
 ---
@@ -12,9 +12,13 @@
 - **wangray Agent Handbook** - CRUD 验证、健康度仪表盘、生命周期
 - **memU** - 文件系统架构、主动意图理解、交叉引用
 - **Memory-Like-A-Tree** - 树状可视化、精华提取、TTL 标记
+- **learn-claude-code** - Agent Loop、工具注册、任务管理、多 Agent 协作
 - **悠悠定制** - 情感记忆、更念旧、温柔风格
 
-**核心理念：** 让知识像树一样生长。Agent 正常工作，树自动生长。
+**核心理念：**
+> 让知识像树一样生长。Agent 正常工作，树自动生长。🌳
+> 
+> One loop & Bash is all you need. 🔄
 
 ---
 
@@ -39,11 +43,15 @@ memory/
 │   └── domains.md
 ├── context/                       # 上下文（memU 风格）
 │   ├── recent/                    # 最近对话
-│   └── pending-tasks.md           # 待办任务
+│   ├── tasks.jsonl                # 任务管理 (JSONL 格式)
+│   └── pending-tasks.md           # 待办任务 (兼容旧格式)
 ├── archive/                       # 冷存储（.archive 跳过 QMD 索引）
 ├── state/
-│   └── consolidation.json         # Consolidation 状态
+│   ├── consolidation.json         # Consolidation 状态
+│   └── tree-health.json           # 记忆树健康度
+├── essence.jsonl                  # 精华池 (归档前提取)
 └── YYYY-MM-DD.md                  # 每日记忆日志
+```
 ```
 
 ---
@@ -122,6 +130,64 @@ memory/
 - 监控对话流，识别用户意图
 - 自动提取待办事项
 - 检测情绪，主动关怀
+
+### 8️⃣ Agent Loop（learn-claude-code）
+
+**核心理念：** One loop & Bash is all you need
+
+**悠悠的 Agent Loop：**
+
+```
+Telegram 消息 → messages[] → LLM (Qwen3.5-Plus)
+                              │
+                        tool_use?
+                          / \
+                        yes  no
+                         │   │
+                    执行工具  返回文本
+                         │
+                    追加结果
+                         │
+                    循环 (最多 5 次)
+```
+
+**Python 伪代码：**
+```python
+def youyou_agent_loop(user_message):
+    messages = load_context()  # Layer 1 + 最近对话
+    messages.append({"role": "user", "content": user_message})
+    
+    while len(messages) < MAX_TURNS:
+        response = llm(messages, tools=YOUYOU_TOOLS)
+        
+        if not has_tool_use(response):
+            return response.content
+        
+        results = execute_tools(response)
+        messages.append({"role": "user", "content": results})
+```
+
+**工具注册表：**
+```python
+TOOL_HANDLERS = {
+    "read": read_file,
+    "write": write_file,
+    "edit": edit_file,
+    "exec": run_command,
+    "web_search": search_web,
+    "web_fetch": fetch_url,
+    "memory_search": search_memory,
+    "memory_get": get_memory,
+    "browser": control_browser,
+    "message": send_message,
+    "tts": text_to_speech,
+    "cron": manage_cron,
+    "sessions_spawn": spawn_subagent,
+    "sessions_send": send_to_session,
+}
+```
+
+**添加新工具 = 注册一个新处理器**
 
 ---
 
