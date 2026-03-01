@@ -27,6 +27,10 @@ check_api_failures() {
     if [[ -f "$gateway_log" ]]; then
         # 统计最近 1 小时的 API 错误
         error_count=$(grep -c "API.*Error\|401\|403\|500" "$gateway_log" 2>/dev/null || echo "0")
+        # 确保是数字
+        error_count=$(echo "$error_count" | tr -d '[:space:]')
+    else
+        error_count=0
     fi
     
     log "检测到 $error_count 个 API 错误"
