@@ -1,0 +1,20 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "attachments",
+  "useMarkdownLinks": true,
+  "legacyEditor": false,
+  "livePreview": true,
+  "readableLineLength": false,
+  "strictLineBreaks": false,
+  "showLineNumber": true,
+  "autoPairBrackets": true,
+  "autoPairMarkdown": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "tabSize": 2,
+  "focusNewTab": true,
+  "defaultViewMode": "source",
+  "spellcheck": false,
+  "spellcheckLanguages": null
+}

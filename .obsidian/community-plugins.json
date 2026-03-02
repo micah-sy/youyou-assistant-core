@@ -1,0 +1,25 @@
+{
+  "core": {
+    "editor": true,
+    "outline": true,
+    "backlink": true,
+    "graph": true,
+    "search": true,
+    "star": true,
+    "tag-pane": true,
+    "file-explorer": true,
+    "slash-command": true,
+    "templates": true,
+    "note-composer": true,
+    "command-palette": true,
+    "markdown-importer": true,
+    "zk-prefixer": false,
+    "random-note": false,
+    "properties": true,
+    "sync": false,
+    "workspaces": false,
+    "canvas": true,
+    "bookmarks": true,
+    "audio-recorder": false
+  }
+}
