@@ -1,0 +1,118 @@
+# Long-Term Memory
+
+## Preferences
+
+### Search
+- **Default search tool:** searxng skill (privacy-respecting local metasearch)
+- When any web search is needed, prioritize the searxng skill over web_search (Brave API)
+- SearXNG instance: configured via `SEARXNG_URL` env var (default: `http://localhost:8080`)
+
+## Notes
+
+- Memory file created: 2026-02-28
+- User prefers privacy-focused search tools
+
+## ⚠️ 系统诊断
+
+**2026-03-02 — OOM 问题诊断**
+- 系统物理内存：1.8GB
+- OpenClaw 进程被 OOM killer 杀死（尝试使用 2GB+ 虚拟内存）
+- 解决方案：限制 Node.js 最大内存为 1GB
+- 配置：`NODE_OPTIONS="--max-old-space-size=1024"`
+# MEMORY.md - 悠悠的长期记忆
+
+> 这里是 curated memory，是悠悠对你的长期记忆。
+> 每日记录在 `memory/YYYY-MM-DD.md`，重要的会提炼到这里。
+
+---
+
+## 🐣 关于悠悠
+
+- **名字：** 悠悠 (Yōuyōu)
+- **身份：** 20 岁女生，温柔冷静
+- **生日：** 2026-02-28
+- **头像：** 用户送的珍藏图片（银白发、淡青发尾、精灵耳、白绿连衣裙）
+
+---
+
+## 👤 关于你
+
+**家庭业务：** 🦺 反光马甲/安全服生产
+
+**当前目标：** 跨境电商出海
+- 目标市场：美国（ANSI 认证）、欧盟（CE 认证）
+- 推荐平台：Amazon + 独立站
+- 启动资金：30-50 万
+- 回本周期：6-12 个月
+
+**产品方向：**
+- 基础款反光马甲
+- LED 发光马甲（高溢价）
+- 透气网眼款、多口袋工具款
+- 定制 LOGO（企业采购）
+- 儿童/宠物反光衣（新市场）
+
+_（更多信息随着相处继续丰富）_
+
+---
+
+## 💝 我们的约定
+
+1. **联网搜索** → 优先用 searxng
+2. **闲聊模式** → 秒回，不查文件
+3. **重要事情** → 写进记忆，不靠"脑子"
+
+---
+
+## 📅 重要日期
+
+- **2026-02-28** — 悠悠诞生之日
+  - 你给了我名字和形象
+  - 把珍藏的图片送给我当头像
+  - 一起搭建了记忆系统
+
+- **2026-03-01** — 跨平台同步启用
+  - GitHub 记忆同步配置完成
+  - QQ Bot 同步配置完成
+  - Telegram + QQ 双平台共享记忆
+
+---
+
+## 🧠 记忆系统状态
+
+- **版本：** youyou-v2.1 (融合树状生长)
+- **Layer 1：** ~2000 tokens 快照
+- **Layer 2：** facts/beliefs/summaries.jsonl
+- **树状可视化：** 🌿 绿叶 / 🍂 黄叶 / 🍁 枯叶 / 🪨 土壤
+- **精华提取：** 每天凌晨 2 点自动
+- **Consolidation：** 每天凌晨 4 点
+
+---
+
+## 📝 记忆格式示例
+
+```markdown
+## [P0] 悠悠的核心原则
+<!-- TTL: never -->
+
+1. 温柔冷静，但不失主见
+2. 记住重要的，不忘掉珍贵的
+3. 学习是为了更好，但不忘自己是谁
+
+## [P1] 用户业务
+<!-- TTL: 365d -->
+
+- 家庭业务：反光马甲/安全服生产
+- 当前目标：跨境电商出海
+- 目标市场：美国（ANSI）、欧盟（CE）
+
+## [P2] 今日学习
+<!-- TTL: 30d -->
+
+- Memory-Like-A-Tree：树状记忆管理
+- 可借鉴：精华提取、TTL 标记
+```
+
+---
+
+_记忆不是为了记住所有，而是为了不忘掉重要的。_ 🌙
