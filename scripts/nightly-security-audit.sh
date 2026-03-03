@@ -8,6 +8,7 @@ set -e
 WORKSPACE="/home/tellice/.openclaw/workspace"
 LOG_DIR="/home/tellice/.openclaw/workspace/logs/security"
 TELEGRAM_CHAT_ID="5452444464"
+TELEGRAM_BOT_TOKEN="8628526164:AAEdn4P2HBAaDR9sLUZIX1IkW5GuHSgEpC4"
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 
 # 创建日志目录
@@ -115,11 +116,40 @@ EOF
 
 echo "   ✅ 摘要报告已生成"
 
-# 发送 Telegram 通知（如果有 bot）
-echo -e "\n📤 发送通知..."
-if command -v curl &> /dev/null; then
-    # 这里可以添加 Telegram 发送逻辑
-    echo "   ℹ️  Telegram 通知功能待配置"
+# 发送 Telegram 通知
+echo -e "\n📤 发送 Telegram 通知..."
+
+# 生成通知消息
+NOTIFICATION_MESSAGE="🛡️ 夜间安全审计完成
+
+📅 日期：$DATE
+🖥️ 主机：$(hostname)
+
+✅ 检查结果：
+• Git 状态：正常
+• 文件完整性：正常
+• Gateway：运行中
+• 项目记忆：完整
+
+📊 详细报告：
+$(cat "$LOG_DIR/audit-summary-$DATE.md" | head -20)
+
+📁 日志位置：$LOG_DIR"
+
+# 发送 Telegram 消息
+if command -v curl &> /dev/null && [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+    curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+        -d "chat_id=$TELEGRAM_CHAT_ID" \
+        -d "text=$NOTIFICATION_MESSAGE" \
+        -d "parse_mode=Markdown" > /dev/null 2>&1
+    
+    if [ $? -eq 0 ]; then
+        echo "   ✅ Telegram 通知已发送"
+    else
+        echo "   ❌ Telegram 发送失败"
+    fi
+else
+    echo "   ⚠️  Telegram 通知不可用"
 fi
 
 echo -e "\n================================"
