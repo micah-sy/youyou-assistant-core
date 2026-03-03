@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "searxng": {
+      "version": "1.0.3",
+      "installedAt": 1770711623158
+    },
+    "skill-vetter": {
+      "version": "1.0.0",
+      "installedAt": 1772323804896
+    },
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1772323962156
+    }
+  }
+}

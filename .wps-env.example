@@ -1,0 +1,8 @@
+# WPS 开放平台配置
+# 拿到 AppKey/AppSecret 后填写
+
+export WPS_APP_KEY="你的 AppKey"
+export WPS_APP_SECRET="你的 AppSecret"
+
+# 可选：默认输出目录
+export WPS_OUTPUT_DIR="$HOME/Documents/wps-output"

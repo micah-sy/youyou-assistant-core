@@ -1,0 +1,88 @@
+# 悠悠助手的核心系统仓库 - .gitignore
+
+# 排除用户私人文件
+婚礼*.md
+婚礼*.docx
+婚礼*.xlsx
+婚房*.md
+婚房*.xlsx
+婚前*.md
+婚前*.xlsx
+人员*.md
+人员*.xlsx
+宾客*.md
+宾客*.xlsx
+座位*.md
+座位*.xlsx
+嫁妆*.md
+嫁妆*.xlsx
+伴手*.md
+伴手*.xlsx
+详细*.md
+详细*.xlsx
+婚礼音乐*.md
+婚礼音乐*.xlsx
+工作人员*.md
+工作人员*.xlsx
+接亲*.md
+接亲*.docx
+爱妻*.md
+爱妻*.docx
+微信*.md
+微信*.docx
+电子*.md
+电子*.docx
+婚礼视频*.md
+婚礼视频*.docx
+婚礼主持词*.md
+婚礼主持词*.docx
+婚礼应急*.md
+婚礼应急*.docx
+婚礼筹备*.md
+婚礼筹备*.docx
+新娘*.md
+新娘*.docx
+新郎*.md
+新郎*.docx
+
+# 排除考编制资料
+睢宁*.md
+学历*.md
+考编*.md
+
+# 排除临时文件
+*.tmp
+*.log
+*.zip
+*.pyc
+__pycache__/
+*.pyo
+
+# 排除大型文件（可选）
+# *.pdf
+node_modules/
+
+# 排除敏感配置
+credentials/
+*.key
+*.pem
+.env
+openclaw.json
+telegram-config.json
+
+# 排除编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 排除日志目录
+logs/
+
+# 排除脚本文件（可选）
+*.py
+create_*.py
+md2pdf.py
+update_*.py
+wedding_*.py
