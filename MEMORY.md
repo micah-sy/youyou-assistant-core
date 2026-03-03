@@ -55,21 +55,41 @@ _（更多信息随着相处继续丰富）_
   - QQ Bot 同步配置完成
   - Telegram + QQ 双平台共享记忆
 
-- **2026-03-03** — OpenClaw 系统重建
+- **2026-03-03** — OpenClaw 系统重建（完整升级）
   - Telegram 配置完成 (@Tellice555_bot)
   - 自动启动配置完成 (systemd)
   - GitHub 备份仓库：micah-sy/youyou-assistant-core
+  - **安全系统**: 慢雾安全指南 + 夜间审计 + Telegram 通知
+  - **记忆系统**: 项目记忆管理器 (Claude Code 风格) + EverMemOS
+  - **反检测工具**: playwright-bot-bypass + Camofox + jina-cli
+  - **OpenClaw 版本**: v2026.3.2（最新）
 
 ---
 
 ## 🧠 记忆系统状态
 
-- **版本：** youyou-v2.1 (融合树状生长)
-- **Layer 1：** ~2000 tokens 快照
-- **Layer 2：** facts/beliefs/summaries.jsonl
-- **树状可视化：** 🌿 绿叶 / 🍂 黄叶 / 🍁 枯叶 / 🪨 土壤
+### 三层记忆架构（2026-03-03 升级）
+
+**Layer 1: 工作记忆** → `memory/layer1/snapshot.md` (~2000 tokens)
+
+**Layer 2: 长期记忆** → `memory/layer2/active/*.jsonl`
+
+**Layer 3: 文件系统** → `memory/preferences/`, `memory/relationships/`, `memory/knowledge/`
+
+**项目记忆（Claude Code 风格）** → `project-memory/`
+- `project-goals.md` - 全局目标跟踪
+- `current-status.md` - 实时状态
+- `decisions.md` - 关键决策
+- `tech-stack.md` - 技术栈
+
+**EverMemOS** → `EverMemOS/` (待启动)
+- 结构化存储
+- 混合检索
+
+### 日常维护
 - **精华提取：** 每天凌晨 2 点自动
 - **Consolidation：** 每天凌晨 4 点
+- **夜间审计：** 每天凌晨 2 点（安全 + 记忆完整性）
 
 ---
 
